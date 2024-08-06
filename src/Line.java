@@ -7,7 +7,7 @@ public class Line {
         this.point2 = point2;
     }
 
-    public double getLength (Point point1, Point point2) {
+    public double getLength() {
         double res = Math.sqrt(Math.pow((point2.x - point1.x),2) + Math.pow((point2.y - point1.y), 2));
         return res;
     }

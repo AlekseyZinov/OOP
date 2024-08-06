@@ -13,9 +13,9 @@ public class Main {
         System.out.println(line2);
         System.out.println(line3);
         System.out.println ("Общая длина всех линий: " +
-                getLinesLength(line1.getLength(point1,point2),
-                        line2.getLength(point3,point4),
-                        line3.getLength(point2,point3)));
+                getLinesLength(line1.getLength(),
+                        line2.getLength(),
+                        line3.getLength()));
         System.out.println("");
 
         System.out.println("Линии после изменения");
@@ -25,9 +25,9 @@ public class Main {
         System.out.println(line3);
 
         System.out.println ("Общая длина всех линий: " +
-                getLinesLength(line1.getLength(point1,point2),
-                        line2.getLength(point3,point4),
-                        line3.getLength(point2,point3)));
+                getLinesLength(line1.getLength(),
+                        line2.getLength(),
+                        line3.getLength()));
     }
 
     public static double getLinesLength (double length1, double length2 , double length3) {
