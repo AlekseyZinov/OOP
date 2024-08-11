@@ -1,44 +1,52 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        Point point1 = new Point(1,3);
-        Point point2 = new Point(5,3);
-        Point point3 = new Point(10,11);
-        Point point4 = new Point(15, 19);
-        Line line1 = new Line(point1, point2);
-        Line line2 = new Line(point3, point4);
-        Line line3 = new Line(point2, point3);
+        String str1 = "Массив линий: ";
+        String str2 = "Длина доманной: ";
+        String str3 = "Длина массива линий: ";
+        String str4 = "Результат сравнения: ";
 
-        System.out.println("Исходные линии");
-        System.out.println(line1);
-        System.out.println(line2);
-        System.out.println(line3);
-        System.out.println ("Общая длина всех линий: " +
-                getLinesLength(line1.getLength(),
-                        line2.getLength(),
-                        line3.getLength()));
+        Point point1 = new Point(1,5);
+        Point point2 = new Point(2,8);
+        Point point3 = new Point(5,3);
+        Point point4 = new Point(8,9);
+
+        PolyLine polyLine = new PolyLine();
+        polyLine.addPoint(point1);
+        polyLine.addPoint(point2);
+        polyLine.addPoint(point3);
+        polyLine.addPoint(point4);
+        System.out.println("Исходная ломаная");
+        System.out.println(polyLine);
+        System.out.println(str1 + Arrays.toString(polyLine.getLines()));
+        System.out.println(str2 + polyLine.getLength());
+        System.out.println(str3 + getLengthArrayLines(polyLine.getLines()));
+        System.out.println(str4 + Double.valueOf(polyLine.getLength())
+                .equals(Double.valueOf(getLengthArrayLines(polyLine.getLines()))));
         System.out.println("");
 
-        System.out.println("Линии после изменения");
-        changingCoordinatesPoint(line3);
-        System.out.println(line1);
-        System.out.println(line2);
-        System.out.println(line3);
+        changingCoordinatesPoint(point2);
+        System.out.println("Измененная ломаная");
+        System.out.println(polyLine);
+        System.out.println(str1 + Arrays.toString(polyLine.getLines()));
+        System.out.println(str2 + polyLine.getLength());
+        System.out.println(str3 + getLengthArrayLines(polyLine.getLines()));
+        System.out.println(str4 + Double.valueOf(polyLine.getLength())
+                .equals(Double.valueOf(getLengthArrayLines(polyLine.getLines()))));
+        System.out.println("");
 
-        System.out.println ("Общая длина всех линий: " +
-                getLinesLength(line1.getLength(),
-                        line2.getLength(),
-                        line3.getLength()));
     }
 
-    public static double getLinesLength (double length1, double length2 , double length3) {
-        double res = (Math.ceil((length1 + length2 + length3) * 100)) / 100;
-        return res;
+    public static double getLengthArrayLines (Line[] arrLines) {
+        double res = 0;
+        for (int i = 0; i < arrLines.length; i++) {
+            res = res + arrLines[i].getLength();
+        }
+        return (Math.ceil(res * 100)) / 100;
     }
 
-    public static void changingCoordinatesPoint (Line line3) {
-        line3.point1.x += 2;
-        line3.point1.y += 3;
-        line3.point2.x -= 1;
-        line3.point2.y -= 4;
+    public static void changingCoordinatesPoint (Point point) {
+        point.x = point.x + 10;
     }
 }
